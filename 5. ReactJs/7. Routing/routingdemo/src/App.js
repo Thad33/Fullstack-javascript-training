@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
@@ -7,6 +7,7 @@ import OneProduct from "./components/OneProduct";
 import Products from "./components/Products";
 import ProductsDisplay from "./components/ProductsDisplay";
 import { products } from "./data";
+import {CategoriesContext} from './CategoriesContext'
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -16,7 +17,8 @@ function App() {
     const categoriesArr = Array.from(new Set(categories));
     setCategories(categoriesArr);
   }, [products]);
-  return (
+  return ( 
+    <CategoriesContext>
     <div className="App">
       <Navbar />
       <Routes>
@@ -43,6 +45,7 @@ function App() {
         />
       </Routes>
     </div>
+    </CategoriesContext>
   );
 }
 

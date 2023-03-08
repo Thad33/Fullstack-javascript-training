@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { CategoriesContext } from './CategoriesContext';
+
 
 
 function Products({ products }) {
-  const navigate = useNavigate();
-  const [categories, setCategories] = useState([]);
+  const categories = useContext(CategoriesContext);
+
   const handleCategoryNavigation = (category) => {
     navigate(`/products/${category}`);
   };
